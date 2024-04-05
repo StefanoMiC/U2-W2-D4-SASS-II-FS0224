@@ -1,0 +1,33 @@
+@function dynamicSize($size, $padding) {
+  @return calc($size - $padding * 2);
+}
+
+@function createLongShadow($color, $length) {
+  $val: null;
+
+  @for $i from 1 through $length {
+    $val: $val, #{$i}px #{$i}px $color;
+  }
+
+  @return $val;
+}
+
+@function createMultipleBorders($colors) {
+  $val: null;
+
+  @for $i from 1 through length($colors) {
+    $val: $val, 0 0 0 #{$i * 5}px nth($colors, $i);
+  }
+
+  @return $val;
+}
+
+@function createMultipleBordersSteps($color, $length) {
+  $val: null;
+
+  @for $i from 1 through $length {
+    $val: $val, 0 0 0 #{$i * 10}px scale-color($color, $lightness: $i * 5%);
+  }
+
+  @return $val;
+}

@@ -1,0 +1,64 @@
+@import "./partials/functions";
+
+// @mixin dynamicHeight($size, $padding) {
+//   width: calc($size - $padding * 2);
+//   height: calc($size - $padding * 2);
+//   padding: $padding;
+//   display: inline-block;
+//   background-color: coral;
+//   vertical-align: bottom;
+//   overflow: auto;
+// }
+
+.box {
+  display: inline-block;
+  background-color: coral;
+  vertical-align: bottom;
+  overflow: auto;
+}
+
+.box-1 {
+  padding: 20px;
+  height: dynamicSize(200px, 20px);
+  width: dynamicSize(200px, 20px);
+}
+
+.box-2 {
+  padding: 40px;
+  max-height: dynamicSize(200px, 40px);
+  max-width: dynamicSize(200px, 40px);
+}
+
+#long-shadow {
+  h2 {
+    text-align: center;
+    font: {
+      size: 66px;
+      weight: 900;
+      family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+    color: palegreen;
+    letter-spacing: -2px;
+    text-shadow: createLongShadow(purple, 100);
+  }
+}
+
+$border-colors: red, green, blue, yellow, purple, black, coral, crimson;
+.multipleBorders {
+  margin-block: 15rem;
+  div {
+    width: 200px;
+    height: 200px;
+    margin-inline: auto;
+    background-color: palevioletred;
+
+    box-shadow: createMultipleBorders($border-colors);
+  }
+}
+
+.multipleBordersSteps {
+  @extend .multipleBorders;
+  div {
+    box-shadow: createMultipleBordersSteps(palegreen, 20);
+  }
+}
